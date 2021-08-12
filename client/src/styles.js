@@ -8,4 +8,8 @@ export default makeStyles(() => ({
     alignItems: "left",    
     marginLeft: "96px",   
   },  
+  boxContainer: {
+    marginTop: "40px",
+    marginBottom: "50px",
+  }
 }));
