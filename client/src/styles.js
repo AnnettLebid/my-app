@@ -11,5 +11,7 @@ export default makeStyles(() => ({
   boxContainer: {
     marginTop: "40px",
     marginBottom: "50px",
+    display: "flex",
+    justifyContent: "space-between",
   }
 }));
