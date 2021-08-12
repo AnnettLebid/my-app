@@ -11,6 +11,7 @@ export default makeStyles(() => ({
     fontSize: "24px",    
     color: "#FFFFFF",
     outlined: "none",
+    boxSizing: "border-box",
   },  
 
 }));
