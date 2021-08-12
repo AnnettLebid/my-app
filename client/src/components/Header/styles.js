@@ -11,6 +11,9 @@ export default makeStyles(() => ({
     marginTop: "26px",
     marginBottom: "4rem",
   },  
+  heroWrapper: {
+    marginTop: "26px"
+  },
   hero: {
     fontWeight: 500,  
     fontSize: '26px',
