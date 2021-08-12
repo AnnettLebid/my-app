@@ -7,8 +7,6 @@ import { Container, Box } from '@material-ui/core';
 
 import useStyles from './styles';
 
-
-
 const App = () => {  
   const classes = useStyles();
 
@@ -20,7 +18,7 @@ const App = () => {
         <Box className={classes.boxContainer}>       
         <SearchBox />
         <AddButton name={`+  New User`}/>
-        </Box>
+        </Box>       
       </Container>      
     </div>
   );
