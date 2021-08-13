@@ -1,16 +1,15 @@
 import React from 'react';
-import { TableContainer, Paper } from '@material-ui/core';
 import MaterialTable from 'material-table';
 
 import useStyles from './styles';
 
 
 const TABLE_HEADERS = [
-	// { title: 'Full Name', field: 'name' },
-	{ title: 'Email Address', field: 'email' },
-	// { title: 'Location', field: 'country' },
-	// { title: 'Joined', field: 'registered' },
-	// { title: 'Permissions', field: 'isEmbedded' },
+	{ title: 'Full Name', field: 'name', align: "center" },
+	{ title: 'Email Address', field: 'email', align: "center" },
+	{ title: 'Location', field: 'country', align: "center" },
+	{ title: 'Joined', field: 'registered', align: "center" },
+	{ title: 'Permissions', field: 'isEmbedded', align: "center" },
 ];
 
 const Table = ({ users }) => {
@@ -25,7 +24,11 @@ const Table = ({ users }) => {
       options={{ 
         search: false, 
         pageSize: 10, 
-        title: false,      
+        showTitle: false,
+        toolbar: false,
+        borderRadius: "4px",
+        paging: "true",
+        pageSizeOptions: [5, 10, 15, 20],
         rowStyle: {
           backgroundColor: '#494949',    
         },
