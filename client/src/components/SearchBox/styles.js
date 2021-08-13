@@ -12,6 +12,12 @@ export default makeStyles(() => ({
     color: "#FFFFFF",
     outlined: "none",
     boxSizing: "border-box",
+    '&:active': {
+      outline: 'none',
+    },
+    '&:focus': {
+      outline: 'none',
+    }  
   },  
 
 }));
