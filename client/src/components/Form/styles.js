@@ -13,7 +13,8 @@ export default makeStyles(() => ({
     justifyContent: "center",
     alignItems: "left",    
     marginLeft: "26px",   
-    marginRight: "28px",    
+    marginRight: "28px", 
+    outline: "none",   
   },  
   box: {
     display: "flex",
@@ -53,7 +54,13 @@ export default makeStyles(() => ({
     height: "28px",
     borderRadius: "5px",
     backgroundColor: "#494949",
-    border: "1px solid #BFC4C8",    
+    border: "1px solid #BFC4C8",  
+    '&:active': {
+      outline: 'none',
+    },
+    '&:focus': {
+      outline: 'none',
+    }  
   },
   permission: {
     backgroundColor: "#BFC4C8"
