@@ -17,6 +17,12 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    clear();
+  }
+
+  const clear = () => {   
+    setUserData({ firstName: '', lastName: '', email: '', location: '', permission: '' });
   }
 
   return (
@@ -37,7 +43,8 @@ const Form = () => {
           <input 
           name="firstName" 
           variant="outlined"           
-          className={classes.inputfield}          
+          className={classes.inputfield}    
+          value={userData.firstName}      
           onChange={(e) => setUserData({ ...userData, firstName: e.target.value })}
           />
         </Box>
@@ -48,7 +55,8 @@ const Form = () => {
           <input 
             name="lastName" 
             variant="outlined"            
-            className={classes.inputfield}       
+            className={classes.inputfield}  
+            value={userData.lastName}        
             onChange={(e) => setUserData({ ...userData, lastName: e.target.value })}
           />
         </Box>
@@ -59,7 +67,8 @@ const Form = () => {
           <input 
             name="email" 
             variant="outlined"            
-            className={classes.inputfield}           
+            className={classes.inputfield}
+            value={userData.email}              
             onChange={(e) => setUserData({  ...userData, email: e.target.value })}
           />
         </Box>
@@ -70,7 +79,8 @@ const Form = () => {
           <input 
           name="location" 
           variant="outlined"          
-          className={classes.inputfield}   
+          className={classes.inputfield} 
+          value={userData.location} 
           onChange={(e) => setUserData({  ...userData, location: e.target.value })}
         />
         </Box>
@@ -81,7 +91,8 @@ const Form = () => {
           <input 
           name="permission" 
           variant="outlined"        
-          className={`${classes.inputfield} ${classes.permission}`}  
+          className={`${classes.inputfield} ${classes.permission}`} 
+          value={userData.permission} 
           onChange={(e) => setUserData({  ...userData, permission: e.target.value })}
           />
         </Box>    
