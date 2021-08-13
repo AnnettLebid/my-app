@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Typography, Paper, Box } from '@material-ui/core';
 import useStyles from './styles';
 
-const Form = () => {
+const Form = ({ formPopup, showFormPopup }) => {
   const [userData, setUserData] = useState({    
     firstName: '',
     lastName: '',
@@ -19,12 +19,13 @@ const Form = () => {
     e.preventDefault();
     
     clear();
+    showFormPopup();
   }
 
   const clear = () => {   
     setUserData({ firstName: '', lastName: '', email: '', location: '', permission: '' });
   }
-
+  
   return (
     <Paper className={classes.paper} elevation={0}>
       <Box className={classes.box}>
