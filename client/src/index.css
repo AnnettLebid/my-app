@@ -4,4 +4,5 @@ body {
   min-height: 100vh;
   background: linear-gradient(180deg, #434343 0%, rgba(61, 30, 2, 0.84) 100%);
   background-size: cover;
+  box-sizing: border-box;
 }
