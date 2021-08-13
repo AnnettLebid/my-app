@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Typography, Paper, Box } from '@material-ui/core';
+import { Button, Typography, Paper, Box } from '@material-ui/core';
 import useStyles from './styles';
 
 const Form = () => {
@@ -15,7 +15,9 @@ const Form = () => {
 
   const currentId = true;
 
-  const handleSubmit = () => {}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <Paper className={classes.paper} elevation={0}>
@@ -36,7 +38,7 @@ const Form = () => {
           name="firstName" 
           variant="outlined"           
           className={classes.inputfield}          
-          onChange={(e) => setUserData({ firstName: e.target.value })}
+          onChange={(e) => setUserData({ ...userData, firstName: e.target.value })}
           />
         </Box>
         <Box className={classes.inputWrapper}>
@@ -47,7 +49,7 @@ const Form = () => {
             name="lastName" 
             variant="outlined"            
             className={classes.inputfield}       
-            onChange={(e) => setUserData({ lastName: e.target.value })}
+            onChange={(e) => setUserData({ ...userData, lastName: e.target.value })}
           />
         </Box>
         <Box className={classes.inputWrapper}>
@@ -58,7 +60,7 @@ const Form = () => {
             name="email" 
             variant="outlined"            
             className={classes.inputfield}           
-            onChange={(e) => setUserData({  email: e.target.value })}
+            onChange={(e) => setUserData({  ...userData, email: e.target.value })}
           />
         </Box>
         <Box className={classes.inputWrapper}>
@@ -69,7 +71,7 @@ const Form = () => {
           name="location" 
           variant="outlined"          
           className={classes.inputfield}   
-          onChange={(e) => setUserData({  location: e.target.value })}
+          onChange={(e) => setUserData({  ...userData, location: e.target.value })}
         />
         </Box>
         <Box className={classes.inputWrapper}>
@@ -80,7 +82,7 @@ const Form = () => {
           name="permission" 
           variant="outlined"        
           className={`${classes.inputfield} ${classes.permission}`}  
-          onChange={(e) => setUserData({  permission: e.target.value })}
+          onChange={(e) => setUserData({  ...userData, permission: e.target.value })}
           />
         </Box>    
         <Box className={classes.buttonBox}>   
@@ -90,7 +92,7 @@ const Form = () => {
             size="large" 
             type="submit"
             fullWidth
-            >Submit
+            >Submit            
           </Button> 
         </Box>        
       </form>
