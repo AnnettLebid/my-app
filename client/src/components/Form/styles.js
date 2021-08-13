@@ -53,6 +53,12 @@ export default makeStyles(() => ({
     width: "226px",
     height: "28px",
     borderRadius: "5px",
+    boxSizing: "border-box",
+    color: "#CACACA",
+    fontSize: "14px",
+    fontWeight: "300",
+    fontStyle: "light",
+    paddingLeft: "6px",
     backgroundColor: "#494949",
     border: "1px solid #BFC4C8",  
     '&:active': {
@@ -63,7 +69,8 @@ export default makeStyles(() => ({
     }  
   },
   permission: {
-    backgroundColor: "#BFC4C8"
+    backgroundColor: "#BFC4C8",
+    color: "#494949",
   },
   buttonBox: {   
     display: "flex",
