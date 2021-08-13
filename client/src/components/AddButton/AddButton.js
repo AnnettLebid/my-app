@@ -1,13 +1,16 @@
 import React from 'react';
 import useStyles from './styles';
 
-const AddButton = (props) => {
-  const { name } = props;
+const AddButton = ({ name, showFormPopup }) => { 
   
   const classes = useStyles();
  
   return (
-    <button variant="contained" color="primary" className={classes.addUserButton}>{name}</button>
+    <button variant="contained"
+      className={classes.addUserButton}
+      onClick={showFormPopup}
+      >{name}
+    </button>
   )
 }
 
