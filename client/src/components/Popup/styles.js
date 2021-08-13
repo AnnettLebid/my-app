@@ -9,10 +9,10 @@ export default makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     alignContent: "center",
-   },
-   popupTextWrapper: {
-     textAlign: "center",
-   },
+  },
+  popupTextWrapper: {
+    textAlign: "center",
+  },
    popupText: {
     fontSize: "18px", 
     fontWeight: "500",
@@ -20,13 +20,13 @@ export default makeStyles(() => ({
     marginTop: "39px",
     marginBottom: "36px",
     alignContent: "center",
-   },
-   buttonsWrapper: {
+  },
+  buttonsWrapper: {
      display: "flex",
      justifyContent: "space-between",
      margin: "0 83px 0",
-   },
-   submitButton: {
+  },
+  submitButton: {
     width: "91px",
     height: "38px",
     background: "linear-gradient(250.44deg, rgba(251, 107, 3, 0.8) 0.76%, rgba(255, 139, 55, 0.8) 121.19%)",
@@ -36,6 +36,5 @@ export default makeStyles(() => ({
     fontSize: "18px",
     cursor: "pointer",
     border: "none",
-
-   }
+  }
 }));
