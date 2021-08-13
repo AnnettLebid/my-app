@@ -5,7 +5,13 @@ export default makeStyles(() => ({
     height: "447px",
     width: "551px",    
     borderRadius: "25px",
-    background: "#494949",    
+    background: "#494949",  
+    position: "fixed",
+    top: "50%",
+    left: "50%", 
+    transform: "translate(-50%, -50%)",
+    zIndex: "10",
+
   },
   form: {    
     display: "flex",
