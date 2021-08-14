@@ -8,11 +8,12 @@ import userRoutes from './routes/users.js';
 const app = express();
 dotenv.config();
 
+app.use(cors());
+
 app.use('/users', userRoutes);
 
 
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
 
 
 const CONNECTION_URL = process.env.MONGO_URI;
