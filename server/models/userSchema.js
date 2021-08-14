@@ -20,28 +20,21 @@ const userSchema = new Schema({
       latitude: String,
       longitude: String 
     },
-    timezone: {
-      offset: String,
-      description: String
-    }
-  },
+  timezone: {
+    offset: String,
+    description: String
+  },  
   email: String,
-  required: true,
-  unique: true,
-  lowercase: true,
-  validate: (value) => {
-    return validator.isEmail(value)
-  },
   registered: {
-    date: Date, default: Date.now(),
+    date: Date,
     age: Number
   },
   picture: {
-    large: { data: Buffer, contentType: String },
-    medium: { data: Buffer, contentType: String },
-    thumbnail: { data: Buffer, contentType: String }
+    large: String,
+    medium: String,
+    thumbnail: String
   },
-});
+}});
 
 const User = mongoose.model('User', userSchema);
 
