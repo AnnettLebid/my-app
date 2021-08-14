@@ -11,7 +11,16 @@ export const getUsers = async (req, res) => {
   }
 }
 
-export const createUser = (req, res) => {
-  const body = req.body;
+export const createUser = async (req, res) => {  
+  const user = req.body;
 
+  const newUser = new User(user);
+
+  try {
+    await newUser.save();
+
+    res.status(201).json(newUser);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
 }
