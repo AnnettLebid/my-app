@@ -12,14 +12,16 @@ const TABLE_HEADERS = [
 	{ title: 'Permissions', field: 'isEmbedded', align: "center" },
 ];
 
-const Table = ({ users }) => {
+const Table = (props) => {
 
   const classes = useStyles();
 
+  const users = props.users;
+  
   return (      
     <MaterialTable      
       columns={TABLE_HEADERS}
-      data={users}    
+      // data={users}    
       className={classes.mainWrapper}   
       options={{ 
         search: false, 
@@ -27,7 +29,7 @@ const Table = ({ users }) => {
         showTitle: false,
         toolbar: false,
         borderRadius: "4px",
-        paging: "true",
+        // paging: true,
         pageSizeOptions: [5, 10, 15, 20],
         rowStyle: {
           backgroundColor: '#494949',    
@@ -41,8 +43,21 @@ const Table = ({ users }) => {
           backgroundColor: '#494949',
           color: '#FFF'
         },
+        actionsColumnIndex: -1
     }}
-    />
+    actions={[
+      {
+        icon: 'save',
+        tooltip: 'Save User',
+        onClick: (event, rowData) => alert("You saved " + rowData.name)
+      },
+      rowData => ({
+        icon: 'delete',
+        tooltip: 'Delete User',
+        onClick: (event, rowData) => {},       
+      })
+    ]} 
+    />   
   )
 }
 
