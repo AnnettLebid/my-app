@@ -19,10 +19,9 @@ const Users = () => {
 
   const loadUsers =  async () => {
     try {
-      const result = await axios.get("http://localhost:5000/users")
-      const { data } = result;
+      const {data} = await axios.get("http://localhost:5000/users");  
       setUsers(data);
-      setIsLoading(false);
+      setIsLoading(false);      
     } catch (error) {
       console.log(error); 
     }
@@ -34,9 +33,8 @@ const Users = () => {
 
   const showFormPopup = () => {
     setFormPopup(prev => !prev);
-  }
-
-  console.log(users);
+  }  
+ 
   return (
   <Box className={classes.mainContainer}>
     <Box className={classes.boxContainer}>
@@ -44,9 +42,9 @@ const Users = () => {
       <AddButton name={`+  New User`} showFormPopup={showFormPopup} formPopup={formPopup}/>
     </Box>
     <CustomizedTable />
-    {/* <Table users={users} />	 */}
-    {formPopup && <Form showFormPopup={showFormPopup}/>}    
-    {isLoading && <Loader />}
+    {/* { users ?  <Table users={users} /> : ''} */}
+    { formPopup && <Form showFormPopup={showFormPopup}/> }    
+    { isLoading && <Loader /> }
   </Box>
   )
 }
