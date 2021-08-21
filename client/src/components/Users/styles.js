@@ -4,6 +4,7 @@ export default makeStyles(() => ({
   mainContainer: {
     display: "flex",
     flexDirection: "column",
+    marginBottom: '36px',
   },  
   boxContainer: {
     marginTop: "40px",
