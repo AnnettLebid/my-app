@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Box } from '@material-ui/core';
-import logo from '../img/logoCelsius.png'; 
+import logo from '../../img/logoCelsius.png'; 
 
 
 import useStyles from './styles';
