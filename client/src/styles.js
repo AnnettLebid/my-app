@@ -6,6 +6,7 @@ export default makeStyles(() => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "left",    
-    marginLeft: "96px",   
+    marginLeft: "96px",
+    maxWidth: "1728px",   
   },  
 }));
