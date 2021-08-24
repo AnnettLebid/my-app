@@ -7,7 +7,7 @@ export default makeStyles(() => ({
     background: '#494949',
     borderRadius: '4px',
     paddingLeft: '115px',
-    paddingRight: '150px',
+    paddingRight: '150px',   
   }, 
   FullNameHeader: {
     paddingLeft: '120px',
@@ -16,7 +16,7 @@ export default makeStyles(() => ({
     display: 'flex',
     justifyContent: 'left',
     marginLeft: '100px',
-    alignItems: 'baseLine',
+    alignItems: 'flexEnd',
   },  
   avatar: {
     width: '34px',
