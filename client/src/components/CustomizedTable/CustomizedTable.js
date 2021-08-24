@@ -42,20 +42,45 @@ const StyledTableRow = withStyles((theme) => ({
 // });
 
 
+const columns = [
+  { id: 'fullName', label: 'Full Name', paddingLeft: 120 },
+  { id: 'email', label: 'Email Address' },
+  { id: 'location', label: 'Location' },
+  { id: 'joined', label: 'Joined' },
+  { id: 'btnModify', label: '' },
+  { id: 'btnEdit', label: '' },
+];
+
 export default function CustomizedTable({users}) {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(8);
+
   const classes = useStyles();
   console.log(users)
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
-        <TableHead>
+        <TableHead className={classes.head}>
           <TableRow>
-            <StyledTableCell className={classes.FullNameHeader}>Full Name</StyledTableCell>
-            <StyledTableCell align="right">Email Address</StyledTableCell>
-            <StyledTableCell align="right">Location</StyledTableCell>
-            <StyledTableCell align="right">Joined</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
+            {columns.map((column) => (
+                <StyledTableCell className={classes.header}
+                  key={column.id}                  
+                  style={{ paddingLeft: column.paddingLeft }}
+                >
+                  {column.label}
+                </StyledTableCell>
+              ))}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -73,7 +98,16 @@ export default function CustomizedTable({users}) {
             </StyledTableRow>
           ))}
         </TableBody>
-      </Table>     
+      </Table>  
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        // count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />   
     </TableContainer>
   );
 }
