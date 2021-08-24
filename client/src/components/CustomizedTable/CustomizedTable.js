@@ -1,7 +1,12 @@
 import React from 'react';
+import Moment from 'moment';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TableHead from '@material-ui/core/TableHead';
-import { Table, TableBody, TableCell, TableContainer, TableRow, Paper, TablePagination  } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableRow, Paper, Avatar, Typography, TablePagination  } from '@material-ui/core';
+import Button from '../Button/Button';
+import PencilIcon from '../icons/PencilIcon';
+import TrashIcon from '../icons/TrashIcon';
+import useStyles from './styles';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -28,50 +33,43 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Geneviève Roux', 'genevieve.roux@example.com', 'Switzerland', 'June 1, 2014', 'Admin'),
-  createData('Adam Green', 'adam.green@example.com', 'New Zeland', 'March 30, 2019', 'Admin'),
-  createData('Jeanne Brunet', 'jeanne.brunet@example.com', 'France', 'November 24, 2014', 'Admin'),
-  createData('Ulla Bürkle', 'ulla.burkle@example.com', 'Germany', 'May 28, 2019', 'Contributor'),
-  createData('Jaque Gomes', 'jaque.gomes@example.com', 'Brazil', 'July 12, 2017', 'Contributor'),
-];
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
 
 
-export default function CustomizedTable() {
+// const useStyles = makeStyles({
+//   table: {
+//     minWidth: 700,
+//   },
+// });
+
+
+export default function CustomizedTable({users}) {
   const classes = useStyles();
-
+  console.log(users)
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Full Name</StyledTableCell>
+            <StyledTableCell className={classes.FullNameHeader}>Full Name</StyledTableCell>
             <StyledTableCell align="right">Email Address</StyledTableCell>
             <StyledTableCell align="right">Location</StyledTableCell>
             <StyledTableCell align="right">Joined</StyledTableCell>
-            <StyledTableCell align="right">Permissions</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
+          {users && users.map((user) => (
+            <StyledTableRow key={user._id}>
+              <StyledTableCell component="th" scope="row" className={classes.fullNameCell}>
+                <Avatar alt={user.name.last} src={user.picture.thumbnail} className={classes.avatar} />              
+                {`${user.name.first} ${user.name.last}`}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="right">{user.email}</StyledTableCell>
+              <StyledTableCell align="right">{user?.location?.country}</StyledTableCell>
+              <StyledTableCell align="right"> {Moment(user?.registered?.date).format('MMMM D, YYYY')}</StyledTableCell>
+              <StyledTableCell align="right"><Button iconName={<PencilIcon/>}>Modify</Button></StyledTableCell>
+              <StyledTableCell align="right"><Button iconName={<TrashIcon/>}>Delete</Button></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
