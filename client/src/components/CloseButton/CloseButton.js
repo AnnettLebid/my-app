@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import useStyles from './styles';
 
-const CloseButton = () => {
+const CloseButton = ({handleClick}) => {
+  const classes = useStyles();
   return (
     <svg 
+      onClick={handleClick}
+      className={classes.closeButton}
       width="17" 
       height="17" 
       viewBox="0 0 17 17" 
