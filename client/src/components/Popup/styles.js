@@ -9,6 +9,12 @@ export default makeStyles(() => ({
     display: "flex",
     flexDirection: "column",
     alignContent: "center",
+    padding: "9px",
+  },
+  closeButton: {
+    display: "flex",
+    flexDirection: "row-reverse",
+    marginRight: "11px",
   },
   popupTextWrapper: {
     textAlign: "center",
@@ -17,7 +23,7 @@ export default makeStyles(() => ({
     fontSize: "18px", 
     fontWeight: "500",
     color: "#C9C9C9",
-    marginTop: "39px",
+    marginTop: "15px",
     marginBottom: "36px",
     alignContent: "center",
   },
