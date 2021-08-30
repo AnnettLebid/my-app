@@ -9,11 +9,11 @@ const app = express();
 dotenv.config();
 
 app.use(cors());
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 app.use('/users', userRoutes);
 
-
-app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
 
 const CONNECTION_URL = process.env.MONGO_URI;
