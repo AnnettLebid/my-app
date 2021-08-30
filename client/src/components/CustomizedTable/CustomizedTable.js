@@ -33,15 +33,6 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-
-
-// const useStyles = makeStyles({
-//   table: {
-//     minWidth: 700,
-//   },
-// });
-
-
 const columns = [
   { id: 'fullName', label: 'Full Name', paddingLeft: 120 },
   { id: 'email', label: 'Email Address' },
@@ -51,26 +42,13 @@ const columns = [
   { id: 'btnEdit', label: '' },
 ];
 
-export default function CustomizedTable({users}) {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(8);
+export default function CustomizedTable({ users, showDeleteDialog }) {
 
   const classes = useStyles();
-  console.log(users)
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-
 
   return (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
+      <Table className={classes.table} aria-label="users table">
         <TableHead className={classes.head}>
           <TableRow>
             {columns.map((column) => (
@@ -93,21 +71,16 @@ export default function CustomizedTable({users}) {
               <StyledTableCell align="right">{user.email}</StyledTableCell>
               <StyledTableCell align="right">{user?.location?.country}</StyledTableCell>
               <StyledTableCell align="right"> {Moment(user?.registered?.date).format('MMMM D, YYYY')}</StyledTableCell>
-              <StyledTableCell align="right"><Button iconName={<PencilIcon/>}>Modify</Button></StyledTableCell>
-              <StyledTableCell align="right"><Button iconName={<TrashIcon/>}>Delete</Button></StyledTableCell>
+              <StyledTableCell align="right">
+                <Button iconName={<PencilIcon/>}>Modify</Button>
+              </StyledTableCell>
+              <StyledTableCell align="right">               
+                <Button iconName={<TrashIcon/>} handleClick={() => showDeleteDialog(user._id)}>Delete</Button>
+              </StyledTableCell>
             </StyledTableRow>
-          ))}
+           ))}        
         </TableBody>
       </Table>  
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        // count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />   
     </TableContainer>
   );
 }
