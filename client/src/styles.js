@@ -7,6 +7,7 @@ export default makeStyles(() => ({
     justifyContent: "center",
     alignItems: "left",    
     marginLeft: "96px",
-    maxWidth: "1728px",   
+    maxWidth: "1728px", 
+    padding: 0,  
   },  
 }));
