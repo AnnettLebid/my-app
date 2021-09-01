@@ -1,15 +1,17 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import Avatar from 'material-table';
 
 import useStyles from './styles';
 
 
-const TABLE_HEADERS = [
-	{ title: 'Full Name', field: 'name', align: "center" },
+const TABLE_HEADERS = [	
+  { title: 'Full Name', align: "right", render: rowData => <img src={rowData.picture.medium} alt = 'user avatar' style={{width: 50, borderRadius: '50%'}}/>},
+  { title: '', align: "left", render: (rowData) => `${rowData.name.first} ${rowData.name.last}`}, 
 	{ title: 'Email Address', field: 'email', align: "center" },
-	{ title: 'Location', field: 'country', align: "center" },
-	{ title: 'Joined', field: 'registered', align: "center" },
-	{ title: 'Permissions', field: 'isEmbedded', align: "center" },
+	{ title: 'Location', field: 'location.country', align: "center" },
+	{ title: 'Joined', field: 'registered.date', align: "center" },
+	// { title: 'Permissions', field: 'isEmbedded', align: "center" },
 ];
 
 const Table = (props) => {
@@ -17,15 +19,16 @@ const Table = (props) => {
   const classes = useStyles();
 
   const users = props.users;
+  console.log(users)
   
   return (      
     <MaterialTable      
       columns={TABLE_HEADERS}
-      // data={users}    
+      data={users}    
       className={classes.mainWrapper}   
       options={{ 
         search: false, 
-        pageSize: 10, 
+        pageSize: 8, 
         showTitle: false,
         toolbar: false,
         borderRadius: "4px",
