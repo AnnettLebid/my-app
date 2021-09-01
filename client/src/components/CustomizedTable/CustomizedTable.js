@@ -2,10 +2,11 @@ import React from 'react';
 import Moment from 'moment';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import TableHead from '@material-ui/core/TableHead';
-import { Table, TableBody, TableCell, TableContainer, TableRow, Paper, Avatar, Typography, TablePagination  } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableRow, Paper, Avatar, Box, TablePagination  } from '@material-ui/core';
 import Button from '../Button/Button';
 import PencilIcon from '../icons/PencilIcon';
 import TrashIcon from '../icons/TrashIcon';
+import LocationIcon from '../icons/LocationIcon';
 import useStyles from './styles';
 
 const StyledTableCell = withStyles((theme) => ({
@@ -35,7 +36,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const columns = [
   { id: 'fullName', label: 'Full Name', paddingLeft: 120 },
-  { id: 'email', label: 'Email Address' },
+  { id: 'email', label: 'Email Address', maxWidth: 225 },
   { id: 'location', label: 'Location' },
   { id: 'joined', label: 'Joined' },
   { id: 'btnModify', label: '' },
@@ -54,7 +55,7 @@ export default function CustomizedTable({ users, showDeleteDialog }) {
             {columns.map((column) => (
                 <StyledTableCell className={classes.header}
                   key={column.id}                  
-                  style={{ paddingLeft: column.paddingLeft }}
+                  style={{ paddingLeft: column.paddingLeft, maxWidth: column.maxWidth }}
                 >
                   {column.label}
                 </StyledTableCell>
@@ -69,7 +70,12 @@ export default function CustomizedTable({ users, showDeleteDialog }) {
                 {`${user.name.first} ${user.name.last}`}
               </StyledTableCell>
               <StyledTableCell align="right">{user.email}</StyledTableCell>
-              <StyledTableCell align="right">{user?.location?.country}</StyledTableCell>
+              <StyledTableCell align="right" style={{ display: 'inlineFlex' }}>
+                <Box className={classes.location}>
+                  <LocationIcon  />
+                </Box>
+                {user?.location?.country}
+              </StyledTableCell>
               <StyledTableCell align="right"> {Moment(user?.registered?.date).format('MMMM D, YYYY')}</StyledTableCell>
               <StyledTableCell align="right">
                 <Button iconName={<PencilIcon/>}>Modify</Button>
