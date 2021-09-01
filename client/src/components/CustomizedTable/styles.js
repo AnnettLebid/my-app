@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
   table: {     
-    width: '1728px',
+    minWidth: '1728px',
     height: '764px',
     background: '#494949',
     borderRadius: '4px',
@@ -23,4 +23,8 @@ export default makeStyles(() => ({
     height: '34px',
     marginRight: '22px',
   }, 
+  location: {
+    marginRight: "9px",
+    display: "inline-flex",
+  }
 }));
