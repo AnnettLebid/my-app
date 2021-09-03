@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Typography, Paper, Box } from '@material-ui/core';
 import useStyles from './styles';
 
-const Form = ({ formPopup, showFormPopup }) => {
+const Form = ({ formPopup, toggleFormPopup, createNewUser }) => {
   const [userData, setUserData] = useState({    
     firstName: '',
     lastName: '',
@@ -15,11 +15,11 @@ const Form = ({ formPopup, showFormPopup }) => {
 
   const currentId = true;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => {   
     e.preventDefault();
-    
+    createNewUser(userData)   
     clear();
-    showFormPopup();
+    toggleFormPopup();
   }
 
   const clear = () => {   
