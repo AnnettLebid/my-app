@@ -12,10 +12,21 @@ export const getUsers = async (req, res) => {
   }
 }
 
-export const createUser = async (req, res) => {  
+export const createUser = async (req, res) => {     
   const user = req.body;
-
-  const newUser = new User(user);
+ 
+  const newUser = new User ({
+    name: {
+      
+      first: user.firstName,
+      last: user.lastName,
+    },
+    location: {   
+      country: user.location,     
+    },
+    email: user.email,
+  })
+  console.log(newUser);
 
   try {
     await newUser.save();
