@@ -65,9 +65,9 @@ export default function CustomizedTable({ users, showDeleteDialog }) {
         <TableBody>
           {users && users.map((user) => (
             <StyledTableRow key={user._id}>
-              <StyledTableCell component="th" scope="row" className={classes.fullNameCell}>
-                <Avatar alt={user.name.last} src={user.picture.thumbnail} className={classes.avatar} />              
-                {`${user.name.first} ${user.name.last}`}
+              <StyledTableCell alt={user?.name?.first} component="th" scope="row" className={classes.fullNameCell}>
+                <Avatar src={user?.picture?.thumbnail} className={classes.avatar} />              
+                {`${user?.name?.first} ${user?.name?.last}`}
               </StyledTableCell>
               <StyledTableCell align="right">{user.email}</StyledTableCell>
               <StyledTableCell align="right" style={{ display: 'inlineFlex' }}>
