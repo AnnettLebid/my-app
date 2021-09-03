@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchBox from '../SearchBox/SearchBox';
 import AddButton from '../AddButton/AddButton';
-import Table from '../Table/Table'; 
 import CustomizedTable from '../CustomizedTable/CustomizedTable';
 import Form from '../Form/Form';
 import Popup from '../Popup/Popup';
 import Loader from '../Loader/Loader';
 import { deleteUser } from '../../api';
+import { createUser } from '../../api';
 
 import { Box } from '@material-ui/core';
 
@@ -44,22 +44,24 @@ const Users = () => {
   //   getSearchResults(searchValue);
   // },[searchValue])
 
-  const showFormPopup = () => {
+  const toggleFormPopup = () => {
     setFormPopup(prev => !prev);
   }
   
   const showDeleteDialog = (id) => {
     setCurrentUser(id);
     togglePopup();
-    console.log(id)
   }
 
   const deleteUserData = async () => {
-    console.log('in delete user data')
     await deleteUser(currentUser);
     togglePopup();
     setCurrentUser(null);  
     loadUsers();   
+  }
+
+  const createNewUser = async (userData) => {    
+    await createUser(userData)  ;  
   }
 
   const togglePopup = () => {
@@ -70,11 +72,10 @@ const Users = () => {
   <Box className={classes.mainContainer}>
     <Box className={classes.boxContainer}>
       <SearchBox searchVale={searchValue} setSearchValue={setSearchValue} />
-      <AddButton name={`+  New User`} showFormPopup={showFormPopup} formPopup={formPopup}/>
+      <AddButton name={`+  New User`} showFormPopup={toggleFormPopup} formPopup={formPopup}/>
     </Box>
-    { users ?  <CustomizedTable users={users} showDeleteDialog={showDeleteDialog} /> : ''}
-    {/* { users ?  <Table users={users} /> : ''} */}
-    { formPopup && <Form showFormPopup={showFormPopup}/> }
+    { users ?  <CustomizedTable users={users} showDeleteDialog={showDeleteDialog} /> : ''}   
+    { formPopup && <Form toggleFormPopup={toggleFormPopup} createNewUser={createNewUser}/> }
     {displayPopup && 
       <Popup hidePopup={togglePopup} confirmPopup={deleteUserData}/>}    
     { isLoading && <Loader /> }
